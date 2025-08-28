@@ -1,0 +1,141 @@
+/* ====== Luxury Perfume UI — Ecommerce + Purple Pattern ======
+   - Minimal, elegant, India-inspired ecommerce skin
+   - Seamless purple background (subtle, non-vibrant)
+   - Cards/sections stay clean on white for legibility
+============================================================== */
+
+:root{
+  /* Core */
+  --ink:#1b1b1b; --muted:#6c6c6c; --bg:#fafafa; --card:#fff; --hairline:#eee;
+  --accent:#0f3d6e; /* sapphire primary for CTAs/links */
+
+  /* Purple family (subtle) */
+  --purple-1:#FBF8FF; /* base canvas */
+  --purple-2:rgba(139,92,246,0.10); /* #8b5cf6 */
+  --purple-3:rgba(168,85,247,0.08); /* #a855f7 */
+  --purple-dot:rgba(124,58,237,0.14); /* #7c3aed */
+  --purple-line:rgba(99,102,241,0.04); /* #6366f1 */
+
+  /* Accents */
+  --gold:#c9a76a; --sale:#b81d24; --new:#106c5c;
+
+  /* UI */
+  --shadow-sm:0 6px 14px rgba(0,0,0,.08); --shadow-md:0 16px 30px rgba(0,0,0,.12);
+  --r-card:16px; --r-btn:12px;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+
+/* === Elegant purple pattern background ===
+   Layers:
+   1) two immense, faint radial washes for depth
+   2) seamless SVG tile (dots + gentle gradient)
+   Keep content panels on white. */
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 700px at 80% -10%, var(--purple-2), transparent 60%),
+    radial-gradient(1000px 600px at -10% 110%, var(--purple-3), transparent 60%),
+    url('/patterns/purple-minimal.svg') 0 0/64px 64px repeat;
+  background-color: var(--purple-1);
+  /* Keep big washes fixed for a parallax-ish calm effect */
+  background-attachment: fixed, fixed, scroll;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  line-height: 1.55;
+}
+
+/* Containers & grids */
+.container{max-width:1200px;margin:0 auto;padding:0 1rem}
+.grid{display:grid;gap:1rem}
+.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1100px){.grid-cols-4{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:800px){.grid-cols-4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.grid-cols-4{grid-template-columns:1fr}}
+
+/* Top strip */
+.topbar{background:#111;color:#fff}
+.topbar .inner{display:flex;justify-content:space-between;align-items:center;font-size:.9rem;padding:.5rem 0}
+.topbar a{color:#fff;text-decoration:none;opacity:.9}
+.topbar a:hover{opacity:1}
+
+/* Header with logo + search + icons */
+.header{background:#fff;border-bottom:1px solid var(--hairline)}
+.header .row{display:grid;grid-template-columns:200px 1fr 160px;gap:1rem;align-items:center;padding:.9rem 0}
+.logo{font-family:"Playfair Display", Georgia, serif;font-weight:700;font-size:1.4rem;text-decoration:none;color:var(--ink)}
+.logo span{color:var(--gold)}
+.search{display:flex;align-items:center;gap:.5rem;border:1px solid var(--hairline);border-radius:999px;padding:.4rem .6rem;background:#fff}
+.search input{flex:1;border:none;outline:none;font-size:1rem;background:transparent}
+.search button{border:none;background:var(--accent);color:#fff;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+.icons{display:flex;gap:.8rem;justify-content:flex-end}
+.icon-btn{border:1px solid var(--hairline);background:#fff;border-radius:999px;padding:.45rem .7rem;cursor:pointer}
+
+/* Category nav */
+.navbar{background:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--hairline)}
+.navbar .nav-inner{display:flex;gap:1rem;align-items:center;overflow:auto;white-space:nowrap;padding:.6rem 0}
+.navbar a{text-decoration:none;color:#333;font-weight:600;opacity:.85;padding:.4rem .6rem;border-radius:10px}
+.navbar a:hover{background:#f3f4f6;opacity:1}
+
+/* Hero */
+.hero{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm);background:#eaeaea}
+.hero-slide{height:360px;display:grid;place-items:center;color:#fff;font-family:"Playfair Display",serif;font-size:2rem}
+.hero-dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:.4rem}
+.hero-dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.6)}
+.hero-dots button.active{background:#fff}
+
+/* Promo tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.tile{border-radius:16px;background:#fff;overflow:hidden;box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;height:130px;font-weight:700}
+@media (max-width:800px){.tiles{grid-template-columns:1fr}}
+
+/* Sections */
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin:1.2rem 0 .6rem}
+.section-head h2{font-family:"Playfair Display",serif;margin:0}
+
+/* Cards */
+.card{position:relative;background:var(--card);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--hairline);display:flex;flex-direction:column;transition:transform .18s ease, box-shadow .22s ease}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#f3f3f3}
+.badges{position:absolute;top:10px;left:10px;display:flex;gap:.4rem}
+.badge{font-size:.75rem;font-weight:800;color:#fff;border-radius:999px;padding:.25rem .5rem}
+.badge.sale{background:var(--sale)}
+.badge.new{background:var(--new)}
+.card .content{padding:.9rem;display:flex;flex-direction:column;gap:.35rem}
+.brand{font-size:.85rem;color:#777;text-transform:uppercase;letter-spacing:.8px}
+.row{display:flex;justify-content:space-between;align-items:baseline}
+.price{font-weight:800}
+.mrp{color:#999;text-decoration:line-through;margin-left:.4rem;font-size:.95rem}
+.save{color:var(--sale);font-weight:700;font-size:.9rem;margin-left:.4rem}
+.quick{display:flex;gap:.5rem;margin-top:.5rem}
+.btn{border:1px solid var(--hairline);background:#fff;border-radius:10px;padding:.45rem .7rem;cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff;border:none}
+
+/* Product page */
+.product-wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:1.6rem;margin:1.6rem 0}
+@media (max-width:900px){.product-wrap{grid-template-columns:1fr}}
+.gallery{background:var(--card);border-radius:16px;box-shadow:var(--shadow-sm);padding:.9rem;border:1px solid var(--hairline)}
+.gallery .main{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;background:#f5f5f5}
+.thumbs{display:flex;gap:.6rem;margin-top:.7rem}
+.thumbs img{width:92px;height:92px;object-fit:cover;border-radius:12px;cursor:pointer;opacity:.85;border:1.5px solid transparent;transition:border .18s ease, opacity .18s ease}
+.thumbs img:hover{opacity:1}
+.thumbs img.active{opacity:1;border-color: var(--gold)}
+.product-panel{background:var(--card);border-radius:16px;box-shadow:var(--shadow-sm);padding:1.1rem;border:1px solid var(--hairline)}
+.sizes{display:flex;gap:.55rem;flex-wrap:wrap;margin:.7rem 0 1.1rem}
+.size-btn{padding:.45rem .75rem;background:#F4F1EA;border:1px solid #E7E0CF;border-radius:10px;cursor:pointer;transition:all .18s ease}
+.size-btn:hover{border-color: var(--gold)}
+.size-btn.active{border-color: var(--gold);color:#0f3d6e;background:#FFF8F1}
+button.primary{background:linear-gradient(135deg,#0f3d6e,#123f76);color:#fff;border:none;padding:.8rem 1.05rem;border-radius:12px;cursor:pointer;font-weight:700;box-shadow:var(--shadow-sm);transition:transform .18s ease, box-shadow .22s ease}
+button.primary:hover{transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.review{padding:.85rem 0;border-bottom:1px solid var(--hairline)}
+.stars{color:#f5b301}
+
+/* Footer */
+.footer{margin-top:2rem;background:#111;color:#bbb}
+.footer .inner{display:grid;gap:1rem;grid-template-columns:2fr 1fr 1fr 1fr;padding:2rem 0}
+.footer a{color:#bbb;text-decoration:none}
+.footer small{display:block;text-align:center;padding:.8rem 0;border-top:1px solid #222;color:#888}
+
+/* Micro animation utility */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .42s cubic-bezier(.22,.61,.36,1) both}
