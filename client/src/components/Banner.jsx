@@ -6,7 +6,7 @@ export default function Banner(){
         <p>
           A serene curation blending contemporary craftsmanship with subtle Indian elegance—an indulgent ritual for your everyday.
         </p>
-        <a className="cta" href="#collections">Explore the latest →</a>
+        <a className="cta" href="#collections">Explore the latest collection→</a>
       </div>
     </section>
   )

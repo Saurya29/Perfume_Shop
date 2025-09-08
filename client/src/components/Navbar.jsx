@@ -18,7 +18,7 @@ export default function Navbar(){
     <>
       <header className="header">
         <div className="container row">
-          <Link to="/" className="logo">Perfume<span style={{color:'#c9a76a'}}>Shop</span></Link>
+          <Link to="/" className="logo">Perfumes<span style={{color:'#c9a76a'}}>Shop</span></Link>
           <form className="search" onSubmit={submit}>
             <input value={q} onChange={(e)=>setQ(e.target.value)} placeholder="Search perfumes, brands, notes…" />
             <button type="submit">Search</button>
